@@ -29,5 +29,10 @@ st.line_chart(hist["Close"])
 
 st.subheader("Moving Averages")
 st.line_chart(hist[["Close"]].rolling(20).mean())
+chart_df = hist[["Close"]].copy()
+chart_df["MA20"] = hist["Close"].rolling(20).mean()
+chart_df["MA50"] = hist["Close"].rolling(50).mean()
 
+st.subheader("📈 Price & Moving Averages")
+st.line_chart(chart_df)
 st.caption("Data: Yahoo Finance | SOUN AI Bot")
